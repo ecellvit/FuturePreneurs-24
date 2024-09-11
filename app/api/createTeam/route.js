@@ -13,9 +13,19 @@ export async function POST(req) {
             return NextResponse.json({ status: 400, message: "Team name is required" });
         }
 
-        // Create a new team entry
+        // Check if the team already exists in the database
+        const existingTeam = await Team.findOne({ name: teamName });
+
+        if (existingTeam) {
+            return NextResponse.json({ status: 400, message: "Team name already exists" });
+        }
+
+        // Create a new team entry if it doesn't exist
         const newTeam = new Team({ name: teamName });
         await newTeam.save();
+        console.log(newTeam);
+
+        
 
         return NextResponse.json({ status: 200, message: "Team created successfully" });
     } catch (e) {

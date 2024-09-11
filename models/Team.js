@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-const TeamSchema = new mongoose.Schema({
+const teamSchema = new Schema({
     name: { type: String, required: true },
-}, { timestamps: true });
+});
 
-const Team = mongoose.models.Team || mongoose.model('Team', TeamSchema);
-
-export default Team;
+const Team = mongoose.models.Team || mongoose.model('Team', teamSchema);
+export default Team;  // Use default export for the Team model

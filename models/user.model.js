@@ -1,29 +1,15 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-const userSchema = new Schema(
-  {
-    email: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
-    regNo: {
-      type: String,
-    },
-    mobNo: {
-      type: Number,
-    },
-    hasFilledDetails:{
-        type:Boolean,
-    },
-    consent:{
-        type:Boolean,
-    }
-  },
-  { collection: "Users" }
-);
+const userSchema = new Schema({
+    email: { type: String, required: true },
+    name: String,
+    regNo: String,
+    mobNo: Number,
+    teamName: String,
+    hasFilledDetails: Boolean,
+    consent: Boolean
+}, { collection: "Users" });
 
-export const Users =
-  mongoose.models.Users || mongoose.model("Users", userSchema);
+const Users = mongoose.models.Users || mongoose.model('Users', userSchema);
+export default Users;  // Use default export for the Users model
