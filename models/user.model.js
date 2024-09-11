@@ -6,7 +6,10 @@ const userSchema = new Schema({
     name: String,
     regNo: String,
     mobNo: Number,
-    teamName: String,
+    teamName: {
+      type: String,
+      default: ''
+    },
     hasFilledDetails: Boolean,
     consent: Boolean
 }, { collection: "Users" });
