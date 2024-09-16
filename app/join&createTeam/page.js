@@ -1,3 +1,6 @@
+export default function page() {
+  return (<main>Join and Create Team.</main>);
+}
 "use client"
 import { useState } from 'react';
 
