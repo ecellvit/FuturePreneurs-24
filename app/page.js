@@ -1,17 +1,20 @@
-"use client";
-import React from "react";
-
-import Link from "next/link";
-import Navbar from "../components/Navbar";
-import SignInBtn from "@/components/SignInbtn";
+'use client';
+import React from 'react';
+import Navbar from '../components/Navbar'; // Ensure this import path is correct
+import Footer from '../components/Footer'; // Ensure this import path is correct
+import RegisterButton from '@/components/registerButton';
+import CountdownTimer from '@/components/counter';
+import SignInBtn from '@/components/SignInBtn';
 import { useSession } from "next-auth/react";
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+import { useRouter } from 'next/navigation';
+import Header from '../components/Header/Header';
 
-export default function Page() {
+const Page = () => {  
   const { data: session, status } = useSession();
+  const router = useRouter();
+  const targetDate = new Date("2024-10-05T18:00");
   const testing = async () => {
-    const res = await fetch("/api/testing", {
+    const res = await fetch("/api/userData", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,21 +25,25 @@ export default function Page() {
         "key": "value",
       }),
     });
-  }
+  
 
-    if(res.status===200){
+    if(res.status === 200){
       console.log("Success");
+      router.push('/userDetails');
     }
   };
-export default function Page() {
+
   return (
     <main>
        <Navbar /> 
-      <div>Futurepreneurs 10.0</div>
-      <SignInBtn />
-
-      <button onClick={testing}>Click me</button>
-      <Footer />
+       <br></br>
+       <br></br>
+       <Header/>
+      <RegisterButton />
+      <Footer/>
+      <CountdownTimer targetDate={targetDate} />
     </main>
   );
-}
+};
+
+export default Page;
