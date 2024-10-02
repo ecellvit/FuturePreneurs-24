@@ -28,6 +28,18 @@ app.prepare().then(async () => {
     io.on("connect", (socket) => {
       console.log("Client connected to socket");
 
+      if (!timerInterval) {
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft -= 1;
+            io.emit("syncTimer", { timeLeft }); // Broadcast the remaining time to all clients
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+          }
+        }, 1000);
+      }
+
       // Listen for the "authenticate" event where the token is sent
       socket.on("authenticate", async ({ token }) => {
         console.log("Authentication", token);
@@ -39,6 +51,7 @@ app.prepare().then(async () => {
         }
 
         try {
+
           console.log(token);
           const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
           const userId = decoded._id;
@@ -116,19 +129,7 @@ app.prepare().then(async () => {
     io.on("disconnect", () => {
         console.log("A client disconnected");
     });
-
-    // Start the timer on the server if not already started
-    if (!timerInterval) {
-      timerInterval = setInterval(() => {
-        if (timeLeft > 0) {
-          timeLeft -= 1;
-          io.emit("syncTimer", { timeLeft }); // Broadcast the remaining time to all clients
-        } else {
-          clearInterval(timerInterval);
-          timerInterval = null;
-        }
-      }, 1000);
-    }
+    
 
     httpServer
       .once("error", (err) => {
