@@ -263,9 +263,9 @@ export default function Page() {
             Delete Team
           </button>
         </div>
-      )} */}
+      )}
       
-     {/* {teamMembers.length > 0 && (
+     {teamMembers.length > 0 && (
         <div className="flex justify-center mt-4 w-full">
           <button
             className="bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-6 rounded-full font-semibold transition-colors duration-300 hover:text-black focus:outline-none shadow-lg text-[0.9rem] max-w-[150px]"
@@ -277,7 +277,7 @@ export default function Page() {
       )}
 
 
-      {showModal && (
+      {/*{showModal && (
         <MyModal
           isVisible={true}
           onClose={handleCloseModal}
