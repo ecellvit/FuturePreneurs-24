@@ -28,20 +28,17 @@ export async function POST(req) {
     }
 
     // Get current time in UTC
-    const currentTime = new Date(); 
-    const quizStartTime = new Date(Date.UTC(2024, 9 - 1, 3, 19, 39, 0)); // 7:40 PM UTC on October 3rd, 2024
-
-    // Convert current time to UTC
-    const currentUTCTime = new Date(currentTime.toUTCString());
+    const currentTime = new Date(); // Get current time in local time zone
+    const quizStartTime = new Date(Date.UTC(2024, 9 - 1, 3, 22, 0, 0));
 
     // Check if current time is less than quiz start time
-    if (currentUTCTime < quizStartTime) {
-      console.log('Validation failed: Current time is before the quiz start time.');
+    if (currentTime < quizStartTime) {
       return NextResponse.json({
         message: "Quiz has not started yet",
         canStart: false,
       }, { status: 403 });
-    } else {
+    }
+    else {
       const round0Data = await Round0.findOne({ teamId: qualTeam._id });
       console.log("Existing Round0 Data:", round0Data);
 
