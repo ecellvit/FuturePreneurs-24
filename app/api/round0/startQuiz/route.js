@@ -6,7 +6,6 @@ import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 
 // Handle POST request to start the quiz
-// Handle POST request to start the quiz
 export async function POST(req) {
   await connectMongo();
   console.log('Inside POST route');
@@ -28,16 +27,16 @@ export async function POST(req) {
       return NextResponse.json({ message: "Team not found" }, { status: 404 });
     }
 
-    const currentTime = new Date(); // Get current time in local time zone
-    const quizStartTime = new Date(Date.UTC(2024, 9 - 1, 3, 19, 7, 0)); // 7:07 PM UTC on October 3rd, 2024
+    // Get current time in UTC
+    const currentTime = new Date(); 
+    const quizStartTime = new Date(Date.UTC(2024, 9 - 1, 3, 19, 39, 0)); // 7:40 PM UTC on October 3rd, 2024
 
-    console.log('Current Time (UTC):', currentTime.toUTCString());
-    console.log('Current Time (ms):', currentTime.getTime());
-    console.log('Quiz Start Time (UTC):', quizStartTime.toUTCString());
-    console.log('Quiz Start Time (ms):', quizStartTime.getTime());
+    // Convert current time to UTC
+    const currentUTCTime = new Date(currentTime.toUTCString());
 
     // Check if current time is less than quiz start time
-    if (currentTime < quizStartTime) {
+    if (currentUTCTime < quizStartTime) {
+      console.log('Validation failed: Current time is before the quiz start time.');
       return NextResponse.json({
         message: "Quiz has not started yet",
         canStart: false,
