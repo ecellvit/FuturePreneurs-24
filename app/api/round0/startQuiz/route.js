@@ -38,6 +38,7 @@ export async function POST(req) {
 
     // Compare the current time with quiz start time
     if (currentTime < quizStartTime) {
+      console.log(currentTime)
       return NextResponse.json({
         message: "Quiz has not started yet",
         canStart: false,
