@@ -26,7 +26,7 @@ const TeamDetails = () => {
       router.push("/");
     } else if (status == "authenticated") {
       setLoading(false);
-      router.push("/");
+      // router.push("/");
       getUserData();
     }
   }, [status, router]);

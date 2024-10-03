@@ -27,7 +27,7 @@ const JoinTeam = ({ teamCode: propTeamCode }) => {
       toast.error("Please Log in or Sign up");
     } else if (status == "authenticated") {
       setLoading(false);
-      router.push("/");
+      // router.push("/");
       getUserData();
     }
   }, [status, router]);

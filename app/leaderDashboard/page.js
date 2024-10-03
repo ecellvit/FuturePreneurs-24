@@ -231,20 +231,19 @@ export default function Page() {
             <h2 className="text-lg font-bold mb-1 text-white">Team Role: {member?.teamRole === 0 ? "Leader" : "Member"}</h2>
             <p className="text-xs mb-1 text-white">Reg. No.: {member?.regNo}</p>
             <p className="text-xs text-white">Mobile No.: {member?.mobNo}</p>
-            {/* {teamMembers.length>1 && <button
             {teamMembers.length > 1 && <button
               className="bg-gradient-to-r from-purple-500 to-blue-500 text-white py-1 px-4 rounded-full mt-2 font-semibold transition-colors duration-300 hover:text-black  focus:outline-none text-sm"
               onClick={() => handleShowModal(index, "remove")}
             >
               {index == 0 ? "Leave" : "Remove"}
             </button>
-            } */}
+            }
           </div>
         ))}
       </div>
 
 
-      {/* {teamMembers.length < 4 && (
+      {teamMembers.length < 4 && (
         <div className="flex justify-center mt-4 w-full">
           <button
             className="bg-green-600 text-white py-2 px-6 rounded-full font-semibold transition-colors duration-300 hover:bg-green-700 focus:outline-none shadow-lg text-[0.9rem] max-w-[150px]"
@@ -266,7 +265,7 @@ export default function Page() {
         </div>
       )}
       
-      {teamMembers.length > 0 && (
+     {/* {teamMembers.length > 0 && (
         <div className="flex justify-center mt-4 w-full">
           <button
             className="bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-6 rounded-full font-semibold transition-colors duration-300 hover:text-black focus:outline-none shadow-lg text-[0.9rem] max-w-[150px]"

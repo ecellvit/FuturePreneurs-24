@@ -55,12 +55,12 @@ const registerButton = () => {
         router.push(details?.user?.teamRole == 0 ? "/leaderDashboard" : "/memberDashboard");
       } else {
         setLoading(false);
-        router.push("/");
+        // router.push("/");
         router.push("/join&createTeam");
       }
     } else {
       setLoading(false);
-      router.push("/");
+      // router.push("/");
       router.push("/userDetails");
     }
 
