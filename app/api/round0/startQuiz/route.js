@@ -30,7 +30,7 @@ export async function GET(req, res) {
     // Fetch the Round0 document associated with this team
     const round0Data = await Round0.findOne({ teamId: qualTeam._id });
 
-    const quizStartTime = new Date("October 3, 2024 17:43:00");
+    const quizStartTime = new Date("October 3, 2024 18:10:00");
     const currentTime = new Date();
     console.log('Current Time:', currentTime);
     console.log('Quiz Start Time:', quizStartTime);
@@ -68,5 +68,14 @@ export async function GET(req, res) {
   } catch (error) {
     console.error('Error in starting the quiz:', error);
     return NextResponse.json({ message: error.message }, { status: 500 });
+  }
+}
+
+
+export async function POST(){
+  try{
+    return NextResponse.json({message:'hii'},{status:200})
+  }catch(error){
+    return NextResponse.json({message:'error'},{status:500});
   }
 }
