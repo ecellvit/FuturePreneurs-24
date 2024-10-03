@@ -68,3 +68,11 @@ export async function GET(req) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
+
+export async function POST(){
+  try{
+    return NextResponse.json({message:'Please'},{status:200})
+  }catch(err){
+    return NextResponse.json({message:'error'},{status:500})
+  }
+}
