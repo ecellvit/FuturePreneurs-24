@@ -31,7 +31,7 @@ export async function POST(req) {
 
     // Convert the time string into a Date object
     const currentTime = new Date(time);
-    const quizStartTime = new Date("October 3, 2024 18:16:00");
+    const quizStartTime = new Date("October 3, 2024 18:43:00");
 
     console.log('Current Time:', currentTime);
     console.log('Quiz Start Time:', quizStartTime);
