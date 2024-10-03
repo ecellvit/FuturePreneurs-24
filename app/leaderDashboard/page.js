@@ -263,7 +263,7 @@ export default function Page() {
             Delete Team
           </button>
         </div>
-      )}
+      )} */}
       
      {/* {teamMembers.length > 0 && (
         <div className="flex justify-center mt-4 w-full">
@@ -276,8 +276,6 @@ export default function Page() {
         </div>
       )}
 
-
-      )} */}
 
       {showModal && (
         <MyModal
