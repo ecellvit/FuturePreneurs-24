@@ -75,8 +75,8 @@ const Instructions = () => {
   //   }
   // }, [timeRemaining]);
 
-  const startQuiz = (e) => {
-    e.preventDefault();
+  const startQuiz = () => {
+    // e.preventDefault();
     // console.log("inside");
     setLoading(true);
   
@@ -174,7 +174,9 @@ const Instructions = () => {
       <div>
             <button
               className={`px-4 py-2 rounded-full text-white bg-gradient-to-r from-purple-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none m-4 w-full h-12 flex items-center justify-center font-bold hover:opacity-80 hover:cursor-pointer`}
-              onClick={()=>{(e) => startQuiz(e)}}
+              onClick={()=>{
+                startQuiz();
+              }}
             >
               {/* {loading ? <LoadingIcons.Oval height={"20px"} /> : "Start Quiz"} */}
               {loading ? "Loading..." : "Start Quiz"}
