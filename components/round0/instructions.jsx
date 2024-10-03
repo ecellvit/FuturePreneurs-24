@@ -101,6 +101,7 @@ const Instructions = () => {
           console.log("quizStartingNow.");
           location.reload();
         } else if (res.status == 403) {
+          console.log(currentTime);
           toast.error("Quiz has not started yet");
         } else {
           toast.error("too late");
