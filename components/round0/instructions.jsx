@@ -76,47 +76,47 @@ const Instructions = () => {
   // }, [timeRemaining]);
 
   const startQuiz = () => {
-    // e.preventDefault();
-    // console.log("inside");
     setLoading(true);
-  
-    // Fetch the current time
-    const currentTime = new Date().toISOString();
-  
     fetch("/api/round0/startQuiz", {
-      method: "POST", // Changed to POST method
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: session?.accessTokenBackend ? `Bearer ${session.accessTokenBackend}` : '',
         "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        time: currentTime, // Include the current time in the body
-      }),
+      }
     })
       .then((res) => {
-        console.log("inside response", res);
-        console.log(res.status);
-        if (res.status == 200) {
-          console.log("quizStartingNow.");
-          location.reload();
-        } else if (res.status == 403) {
-          console.log(currentTime);
-          toast.error("Quiz has not started yet");
-        } else {
-          toast.error("too late");
-        }
         setLoading(false);
-        console.log(res.status);
-        return res.json();
+  
+        // Handle different status codes here
+        if (res.status === 200) {
+          toast.success("Quiz started successfully.");
+          location.reload();
+          return res.json();  // Process the valid JSON response
+        } else if (res.status === 403) {
+          toast.error("Quiz has not started yet.");
+        } else if (res.status === 404) {
+          toast.error("Team not found.");
+        } else {
+          toast.error("An unexpected error occurred. Please try again.");
+        }
+  
+        // Return an empty object to avoid parsing issues if no JSON is returned
+        return {};
       })
       .then((data) => {
-        console.log(data);
+        if (Object.keys(data).length !== 0) {
+          // Process data if it's not an empty object
+          console.log(data);
+        }
       })
       .catch((err) => {
+        setLoading(false);
+        toast.error("An error occurred while starting the quiz.");
         console.log(err);
       });
   };
+  
   
 
   return (
@@ -175,9 +175,7 @@ const Instructions = () => {
       <div>
             <button
               className={`px-4 py-2 rounded-full text-white bg-gradient-to-r from-purple-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none m-4 w-full h-12 flex items-center justify-center font-bold hover:opacity-80 hover:cursor-pointer`}
-              onClick={()=>{
-                startQuiz();
-              }}
+              onClick={startQuiz}
             >
               {/* {loading ? <LoadingIcons.Oval height={"20px"} /> : "Start Quiz"} */}
               {loading ? "Loading..." : "Start Quiz"}
