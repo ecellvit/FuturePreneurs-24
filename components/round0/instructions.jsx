@@ -12,7 +12,7 @@ const Instructions = () => {
   const [loading, setLoading] = useState(false);
   // const [timeRemaining, setTimeRemaining] = useState(60);
   const { data: session, status } = useSession();
-  const targetDate = new Date("2024-10-03T17:40");
+  const targetDate = new Date("2024-10-03T17:43");
 
   /* const calculateTimeRemaining = () => {
     const now = new Date().getTime();
