@@ -75,17 +75,24 @@ const Instructions = () => {
   //   }
   // }, [timeRemaining]);
 
-  const startQuiz = () => {
-    // e.preventDefault();
+  const startQuiz = (e) => {
+    e.preventDefault();
     // console.log("inside");
     setLoading(true);
+  
+    // Fetch the current time
+    const currentTime = new Date().toISOString();
+  
     fetch("/api/round0/startQuiz", {
-      method: "GET",
+      method: "POST", // Changed to POST method
       headers: {
         "Content-Type": "application/json",
         Authorization: session?.accessTokenBackend ? `Bearer ${session.accessTokenBackend}` : '',
         "Access-Control-Allow-Origin": "*",
-      }
+      },
+      body: JSON.stringify({
+        time: currentTime, // Include the current time in the body
+      }),
     })
       .then((res) => {
         console.log("inside response", res);
@@ -109,6 +116,7 @@ const Instructions = () => {
         console.log(err);
       });
   };
+  
 
   return (
     <main className="min-h-[100vh] text-black flex flex-col items-center">
@@ -166,7 +174,7 @@ const Instructions = () => {
       <div>
             <button
               className={`px-4 py-2 rounded-full text-white bg-gradient-to-r from-purple-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none m-4 w-full h-12 flex items-center justify-center font-bold hover:opacity-80 hover:cursor-pointer`}
-              onClick={startQuiz}
+              onClick={()=>{(e) => startQuiz(e)}}
             >
               {/* {loading ? <LoadingIcons.Oval height={"20px"} /> : "Start Quiz"} */}
               {loading ? "Loading..." : "Start Quiz"}

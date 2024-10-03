@@ -7,7 +7,7 @@ import { getTokenDetails } from "@/utils/getTokenDetails";
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 
-export async function GET(req, res) {
+export async function GET(req) {
 
   await connectMongo();
   console.log('inside route')
@@ -26,12 +26,12 @@ export async function GET(req, res) {
     if (!qualTeam) {
       return NextResponse.json({ message: "team not found" }, { status: 404 });
     }
-
+    const {time} = await req.json();
     // Fetch the Round0 document associated with this team
     const round0Data = await Round0.findOne({ teamId: qualTeam._id });
 
     const quizStartTime = new Date("October 3, 2024 18:16:00");
-    const currentTime = new Date();
+    const currentTime = time;
     console.log('Current Time:', currentTime);
     console.log('Quiz Start Time:', quizStartTime);
 
