@@ -2,8 +2,8 @@ import { io } from "socket.io-client";
 
 // Use environment variable to determine the server URL
 const serverURL =
-  process.env.NODE_ENV === "production"
-    ? "https://your-production-url.com" // Replace this with your Render production domain
+  process.env.NODE_ENV == "production"
+    ? "https://futurepreneurs-24-1.onrender.com" // Replace this with your Render production domain
     : "http://localhost:3000"; // Use localhost during development
 
 // Create a socket instance
