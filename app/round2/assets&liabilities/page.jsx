@@ -66,50 +66,61 @@ const AssetsAndLiabilitiesPage = () => {
                     </div>
                 </div>
 
-                {/* Table Section */}
-                <div className="flex flex-col items-center mt-6">
-                    <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
-                        <thead>
-                            <tr className="bg-purple-600 text-white">
-                                <th className="py-3 px-4 text-left">Field</th>
-                                <th className="py-3 px-4 text-left">Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td className="border px-4 py-2">Current Value Of Bond</td>
-                                <td className="border px-4 py-2"></td>
-                            </tr>
-                            <tr>
-                                <td className="border px-4 py-2">Loan Amount</td>
-                                <td className="border px-4 py-2"></td>
-                            </tr>
-                            <tr>
-                                <td className="border px-4 py-2">Interest Payable</td>
-                                <td className="border px-4 py-2"></td>
-                            </tr>
-                            <tr>
-                                <td className="border px-4 py-2">Yield Received</td>
-                                <td className="border px-4 py-2"></td>
-                            </tr>
-                            <tr>
-                                <td className="border px-4 py-2">Debt Score</td>
-                                <td className="border px-4 py-2"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                {/* Div-based Table Section */}
+                <div className="flex flex-col items-center mt-12 justify-center mb-20">
+                    <div className="grid grid-cols-2 gap-0 border border-black rounded-lg w-[90vh] bg-gradient-to-l from-white to-[rgba(198,196,255,0.5)] shadow-md overflow-hidden">
+                        {/* Row 1 */}
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}>Current Value Of Bond</div>
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}></div>
 
-                    {/* Buttons Section */}
-                    <div className="mt-6 space-x-4">
-                        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 border border-gray-500 rounded shadow">
-                            Continue
-                        </button>
-                        <button className="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 border border-purple-700 rounded shadow">
-                            Apply Loan
-                        </button>
+                        {/* Row 2 */}
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}>Loan Amount</div>
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}></div>
+
+                        {/* Row 3 */}
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}>Interest Payable</div>
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}></div>
+
+                        {/* Row 4 */}
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}>Yield Received</div>
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}></div>
+
+                        {/* Row 5 */}
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}>Debt Score</div>
+                        <div className="border border-black px-4 py-4" style={{ fontFamily: "Gotham Black" }}></div>
+                    </div>
+
+                    {/* Buttons and Note Section */}
+                    
+                        <div className="mt-10 flex space-x-20 justify-between items-center">
+                            <button
+                                className="bg-gray-300 py-3 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 border border-gray-500 rounded shadow transition-transform duration-300 transform hover:scale-105 hover:brightness-110"
+                            >
+                                Continue
+                            </button>
+                            <div>
+                                <button
+                                    className="py-3 text-white font-semibold py-2 px-4 border rounded shadow transition-transform duration-300 transform hover:scale-105 hover:brightness-110"
+                                    style={{
+                                        fontFamily: "Gotham Black",
+                                        background: "rgba(128, 125, 252, 1)",
+                                    }}
+                                >
+                                    APPLY LOAN
+                                </button>
+                                <div
+                                    className="text-gray-600 text-[9px] font:medium " 
+                                    style={{ maxWidth: "fit-content" }} // Keeps note within button's width
+                                >
+                                    <strong>NOTE:</strong> This is an optional feature.
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Note Below APPLY LOAN Button */}
                     </div>
                 </div>
-            </div>
+            
         </main>
     );
 };

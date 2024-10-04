@@ -84,64 +84,64 @@ const MaturityPage = () => {
                             }}
                         >DEBT RESTRUCTURING</h2>
                         <div className="flex flex-col space-y-8">
-    {/* Button 1: High Debt Payoff */}
-    <button
-    className="font-semibold text-indigo-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-    style={{
-        fontFamily: "Gotham Black",
-        width: "260px",
-        height: "50px",
-        backgroundColor: "rgba(198, 196, 255, 1)", // Button background color
-        position: "relative", // Required for border and pseudo elements
-        border: "3px solid transparent", // Solid transparent border for showing gradient
-        backgroundClip: "padding-box", // Ensures background color only applies to padding box
-        borderImage: "linear-gradient(to right, rgba(198, 196, 255, 1), rgba(255, 255, 255, 1)) 1", // Gradient border
-        borderRadius: "10px", // Optional, for rounded corners
-    }}
-    onClick={() => alert('Button clicked!')}
->
-    HIGH DEBT PAYOFF
-</button>
+                            {/* Button 1: High Debt Payoff */}
+                            <button
+                                className="font-semibold text-indigo-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                                style={{
+                                    fontFamily: "Gotham Black",
+                                    width: "260px",
+                                    height: "50px",
+                                    backgroundColor: "rgba(198, 196, 255, 1)", // Button background color
+                                    position: "relative", // Required for border and pseudo elements
+                                    border: "3px solid transparent", // Solid transparent border for showing gradient
+                                    //backgroundClip: "padding-box", // Ensures background color only applies to padding box
+                                    borderImage: "linear-gradient(to right, rgba(198, 196, 255, 1), rgba(255, 255, 255, 1)) 1", // Gradient border
+                                    borderRadius: "10px", // Optional, for rounded corners
+                                }}
+                                onClick={() => alert('Button clicked!')}
+                            >
+                                HIGH DEBT PAYOFF
+                            </button>
 
 
-    {/* Button 2: Partial High Debt Payoff */}
-    <button
-    className="font-semibold text-indigo-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-    style={{
-        fontFamily: "Gotham Black",
-        width: "260px",
-        height: "50px",
-        backgroundColor: "rgba(198, 196, 255, 1)", // Button background color
-        position: "relative", // Required for border and pseudo elements
-        border: "3px solid transparent", // Solid transparent border for showing gradient
-        backgroundClip: "padding-box", // Ensures background color only applies to padding box
-        borderImage: "linear-gradient(to right, rgba(198, 196, 255, 1), rgba(255, 255, 255, 1)) 1", // Gradient border
-        borderRadius: "10px", // Optional, for rounded corners
-    }}
-    onClick={() => alert('Button clicked!')}
->
-    PARTIAL HIGH DEBT PAYOFF
-</button>
+                            {/* Button 2: Partial High Debt Payoff */}
+                            <button
+                                className="font-semibold text-indigo-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                                style={{
+                                    fontFamily: "Gotham Black",
+                                    width: "260px",
+                                    height: "50px",
+                                    backgroundColor: "rgba(198, 196, 255, 1)", // Button background color
+                                    position: "relative", // Required for border and pseudo elements
+                                    border: "3px solid transparent", // Solid transparent border for showing gradient
+                                    //backgroundClip: "padding-box", // Ensures background color only applies to padding box
+                                    borderImage: "linear-gradient(to right, rgba(198, 196, 255, 1), rgba(255, 255, 255, 1)) 1", // Gradient border
+                                    borderRadius: "10px", // Optional, for rounded corners
+                                }}
+                                onClick={() => alert('Button clicked!')}
+                            >
+                                PARTIAL HIGH DEBT PAYOFF
+                            </button>
 
-    {/* Button 3: Low Debt Payoff */}
-    <button
-    className="font-semibold text-indigo-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-    style={{
-        fontFamily: "Gotham Black",
-        width: "260px",
-        height: "50px",
-        backgroundColor: "rgba(198, 196, 255, 1)", // Button background color
-        position: "relative", // Required for border and pseudo elements
-        border: "3px solid transparent", // Solid transparent border for showing gradient
-        backgroundClip: "padding-box", // Ensures background color only applies to padding box
-        borderImage: "linear-gradient(to right, rgba(198, 196, 255, 1), rgba(255, 255, 255, 1)) 1", // Gradient border
-        borderRadius: "10px", // Optional, for rounded corners
-    }}
-    onClick={() => alert('Button clicked!')}
->
-    LOW DEBT PAYOFF
-</button>
-</div>
+                            {/* Button 3: Low Debt Payoff */}
+                            <button
+                                className="font-semibold text-indigo-800 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                                style={{
+                                    fontFamily: "Gotham Black",
+                                    width: "260px",
+                                    height: "50px",
+                                    backgroundColor: "rgba(198, 196, 255, 1)", // Button background color
+                                    position: "relative", // Required for border and pseudo elements
+                                    border: "3px solid transparent", // Solid transparent border for showing gradient
+                                    //backgroundClip: "padding-box", // Ensures background color only applies to padding box
+                                    borderImage: "linear-gradient(to right, rgba(198, 196, 255, 1), rgba(255, 255, 255, 1)) 1", // Gradient border
+                                    borderRadius: "10px", // Optional, for rounded corners
+                                }}
+                                onClick={() => alert('Button clicked!')}
+                            >
+                                LOW DEBT PAYOFF
+                            </button>
+                        </div>
 
                     </div>
 
@@ -149,15 +149,15 @@ const MaturityPage = () => {
                     <div className="flex flex-col mt-3 w-1/3 bg-gray-100 rounded-lg p-6 justify-between items-center bg-gradient-to-bl border-2 border-white-100 from-white to-[rgba(198,196,255,0.8)] h-[400px] w-[300px]">
                         <h2 className="text-2xl font-bold text-gray-600 self-center">Maturity</h2>
                         <div className="w-full flex justify-center">
-                        <button
-    className="text-white text-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
-    style={{
-        fontFamily: "Gotham Black",
-        backgroundColor: "rgba(84, 76, 162, 1)" // Custom background color
-    }}
->
-    MATURE
-</button>
+                            <button
+                                className="text-white text-semibold py-2 px-4 rounded-md transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
+                                style={{
+                                    fontFamily: "Gotham Black",
+                                    backgroundColor: "rgba(84, 76, 162, 1)" // Custom background color
+                                }}
+                            >
+                                MATURE
+                            </button>
 
                         </div>
                     </div>
