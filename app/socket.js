@@ -1,12 +1,16 @@
-// socket.js
 import { io } from "socket.io-client";
 
+// Use environment variable to determine the server URL
+const serverURL =
+  process.env.NODE_ENV === "production"
+    ? "https://your-production-url.com" // Replace this with your Render production domain
+    : "http://localhost:3000"; // Use localhost during development
+
 // Create a socket instance
-const socket = io("http://localhost:3000", {
-    transports: ["websocket", "polling"], // Ensure both transports are allowed
-    autoConnect: false, // Don't connect automatically
-    methods: ["GET", "POST"],
-    credentials: true,
+const socket = io(serverURL, {
+  transports: ["websocket", "polling"], // Ensure both transports are allowed
+  autoConnect: false, // Don't connect automatically
+  withCredentials: true, // Allows cookies and credentials to be passed
 });
 
 // Export the socket instance
