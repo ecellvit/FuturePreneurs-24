@@ -9,7 +9,6 @@ import back from '../back.svg';
 export default function Instructions() {
     const router = useRouter();
     const handleContinue = () => {
-        router.push("./page1");
     };
 
     return (
@@ -44,10 +43,10 @@ export default function Instructions() {
                         WebkitTextFillColor: 'transparent',
                     }}
                 >
-                    ROUND 1
+                    ROUND 2
                 </div>
                 <button
-                    className="px-4 py-2 font-semibold shadow-lg transition-transform transform bg-[#8381E7] text-white hover:scale-105 hover:bg-[#5754b3] border rounded-md"
+                    className="px-6 py-2 font-semibold shadow-lg transition-transform transform bg-[#8381E7] text-white hover:scale-105 hover:bg-[#5754b3] border rounded-md"
                     onClick={handleContinue}
                     style={{
                         border: '2.84px solid',
@@ -55,7 +54,7 @@ export default function Instructions() {
                         borderImageSlice: 1,
                     }}
                 >
-                    Continue
+                    Waiting...
                 </button>
             </div>
         </div >
