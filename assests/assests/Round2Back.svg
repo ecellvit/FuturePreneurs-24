@@ -1,4 +1,5 @@
 <svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+<<<<<<< Updated upstream
 <g clip-path="url(#clip0_141_7743)">
 <rect width="1920" height="1080" fill="#FFFDFD"/>
 <g filter="url(#filter0_f_141_7743)">
@@ -24,3 +25,30 @@
 </clipPath>
 </defs>
 </svg>
+=======
+<g clip-path="url(#clip0_126_6422)">
+<rect width="1920" height="1080" fill="#FFFDFD"/>
+<g filter="url(#filter0_f_126_6422)">
+<circle cx="73.008" cy="707.008" r="127.008" fill="#4D5BFF"/>
+</g>
+<g filter="url(#filter1_f_126_6422)">
+<circle cx="1869.01" cy="1166.01" r="127.008" fill="#4D5BFF"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_126_6422" x="-371.52" y="262.48" width="889.056" height="889.055" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="158.76" result="effect1_foregroundBlur_126_6422"/>
+</filter>
+<filter id="filter1_f_126_6422" x="1424.48" y="721.48" width="889.055" height="889.055" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="158.76" result="effect1_foregroundBlur_126_6422"/>
+</filter>
+<clipPath id="clip0_126_6422">
+<rect width="1920" height="1080" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+>>>>>>> Stashed changes

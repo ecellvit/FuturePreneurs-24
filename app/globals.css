@@ -83,3 +83,19 @@
     --foreground: #ededed;
   }
 }
+
+.custom-round2 {
+  background-image: url('../assests/assests/Round2Back.svg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.custom-profilelogo {
+  background-image: url('../assests/assests/profilelogo.svg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
