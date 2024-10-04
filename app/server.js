@@ -10,10 +10,10 @@ import { TeamModel } from "../models/team.model.js";
 import { BondBidding } from "../models/bondBidding.model.js";
 
 const dev = process.env.NODE_ENV !== "production";
-const hostname = process.env.HOST ? process.env.HOST : "localhost";
+// const hostname = process.env.HOST ? process.env.HOST : "localhost";
 const port = process.env.PORT ? process.env.PORT : 3000;
 
-const app = next({ dev, hostname, port });
+const app = next({ dev });
 const handler = app.getRequestHandler();
 
 let timeLeft = 900; // initial time in seconds (15 minutes)
@@ -167,6 +167,6 @@ app.prepare().then(async () => {
         process.exit(1);
       })
       .listen(port, () => {
-        console.log(`> Ready on http://${hostname}:${port}`);
+        console.log(`> Ready on PORT :: ${port}`);
       });
 });
