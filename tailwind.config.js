@@ -26,6 +26,7 @@ module.exports = {
         anton: ['Anton','sans-serif'],
         gotham:['Gotham Black','sans-serif'],
         gotham:['GothamBlack','sans-serif'],
+        gothamlight:['Gotham Black Light','sans-serif'],
         outfit:['Outfit Black','sans-serif'],
         almarai:['Almarai','sans-serif'],
       },
