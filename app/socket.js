@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 // Use environment variable to determine the server URL
 const serverURL =
   process.env.NODE_ENV == "production"
-    ? "https://futurepreneurs-24-production.up.railway.app/" // Replace this with your Render production domain
+    ? process.env.BACKEND_URI // Replace this with your Render production domain
     : "http://localhost:3000"; // Use localhost during development
 
 // Create a socket instance
