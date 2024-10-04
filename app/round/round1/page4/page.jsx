@@ -10,15 +10,14 @@ import Image from 'next/image';
 import back from '../back2.svg';
 import file from '@/public/constant/round1/bonds.json';
 import { set } from "mongoose";
-
-const TimerOverlay = ({ hold, startTime }) => {
+const TimerOverlay = ({ hold, startTime, selectedItem,price }) => {
     const [timeLeft, setTimeLeft] = useState(0);
     const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         if (hold) {
             const currentTime = Date.now();
-            const duration = 60 * 1000; // 3 minutes in milliseconds
+            const duration = 60 * 1000; // 1 minute in milliseconds
             const timeRemaining = Math.max(0, Math.floor((startTime + duration - currentTime) / 1000));
             
             setTimeLeft(timeRemaining);
@@ -37,6 +36,13 @@ const TimerOverlay = ({ hold, startTime }) => {
                 setTimeLeft((prev) => prev - 1);
             }, 1000);
         } else if (timeLeft <= 0) {
+
+            // Automatically allocate bonds when time runs out
+           
+        
+            socket.emit("allocate");
+
+            
             setIsActive(false);
         }
 
@@ -49,7 +55,7 @@ const TimerOverlay = ({ hold, startTime }) => {
         <div style={overlayStyles}>
             <div style={timerStyles}>
                 {timeLeft > 0 ? (
-                    <h1>{`${Math.floor(timeLeft / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')}`} remaining</h1>
+                    <h1>{`${Math.floor(timeLeft / 60).toString().padStart(2, '0')}:${(timeLeft % 60).toString().padStart(2, '0')} remaining`}</h1>
                 ) : (
                     <h1>Time's up!</h1>
                 )}
@@ -75,8 +81,9 @@ const TimerOverlay = ({ hold, startTime }) => {
   const timerStyles = {
     textAlign: 'center',
   };
-
+  
 export default function Bidder() {
+
     const [loading, setLoading] = useState(true);
     const { data: session, status } = useSession();
     const [items, setItems] = useState([]);
@@ -90,11 +97,19 @@ export default function Bidder() {
     const [team, setTeam] = useState("");
     const [hold,setHold]=useState(0);
     const [bondsBidFor, setBondsBidFor] = useState([]);
-    const [priceChange, setPriceChange] = useState(false);
+
+ 
+  const timeoutRef = useRef(null); // Declare a ref to store the timeout ID
+  const [priceChange, setPriceChange] = useState(false);
     const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [startTime, setStartTime] = useState(0);
     const [isAdmin, setIsAdmin] = useState(false);
 
+  useEffect(() => {
+      if (!hold) {
+          clearTimeout(timeoutRef.current); // Clear the timeout when hold is set to false
+      }
+  }, [hold]);
     const handlePriceChange = (e) => {
         let value = e.target.value;
         value = value.replace(/[^0-9]/g, '');
@@ -369,7 +384,7 @@ export default function Bidder() {
                                     ? 'bg-[#8481FA] scale-110 transition-transform cursor-pointer'
                                     : 'bg-[linear-gradient(114deg,rgba(232,232,232,0.10)_15.11%,rgba(0,56,255,0.10)_81.96%)] hover:scale-105 cursor-pointer'
                                 }`} 
-                                disabled={(isFirstHalf && index >= 25) || allocatedItems[index] || hold || bondsBidFor.includes(index)}
+                                disabled={(isFirstHalf && index >= 25) || allocatedItems[index] ||  bondsBidFor.includes(index)}
                                 onClick={() => {
                                     if ((!isFirstHalf || index <= 25) && !allocatedItems[index] && !hold && !bondsBidFor.includes(index)) {
                                         setPrice('');
@@ -473,20 +488,22 @@ export default function Bidder() {
                                             onChange={handlePriceChange}
                                         />
                                         <button
-                                            className={`w-[80%] py-2 text-white rounded-md transition-transform ${
-                                                price
-                                                    ? 'bg-[#8481FA] hover:scale-105'
-                                                    : 'bg-gray-400 cursor-not-allowed'
-                                            }`}
-                                            disabled={!price && allocatedItems[selectedItem.id-1] && hold && !bondsBidFor.includes(selectedItem.id-1)}
                                             onClick={() => {
                                                 setHold(true);
-                                                setTimeout(()=>{
-                                                    setHold(false);
-                                                },60000)
                                                 setStartTime(Date.now());
+                            
+                                                // Clear previous timeout (if any)
+                                                if (timeoutRef.current) {
+                                                    clearTimeout(timeoutRef.current);
+                                                }
+                            
+                                                // // Start the timer
+                                                // timeoutRef.current = setTimeout(() => {
+                                                //     console.log("timeoutr was called")
+                                                //     setHold(false);
+                                                // }, 60000); // 1 minute hold
+                            
                                                 handleNewBid(selectedItem.id, selectedItem.highestBid);
-                                                
                                             }}
                                         >
                                             Submit
@@ -517,7 +534,7 @@ export default function Bidder() {
                     </div>
                 </div>
             </div>
-            <TimerOverlay hold={hold} startTime={startTime}></TimerOverlay>
+            <TimerOverlay hold={hold} startTime={startTime} selectedItem={selectedItem} price={price}></TimerOverlay>
         </div >
     );
 }

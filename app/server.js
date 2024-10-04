@@ -109,7 +109,38 @@ app.prepare().then(async () => {
           socket.emit("syncTimer", { timeLeft });
           socket.emit("initialWallet", {wallet: wallet})
           io.emit("highestBids", {highestBids: bondBidding.highestBids, allocatedBids: bondBidding.allocatedBids, bondsBidFor: bondsBidFor});
+          let isSaving = false;
+          socket.on("allocate", async () => {
+            if (isSaving) return; // Prevent multiple saves
+            isSaving = true; // Lock saving
         
+            try {
+                console.log(team);
+                let index = 0;
+        
+                // Find the team leader's index
+                while (bondBidding.currentBidders[index] !== team.teamLeaderId) {
+                    index++;
+                }
+        
+                // Set the allocated bid and save bondBidding
+                console.log("Allocating bond...");
+                bondBidding.allocatedBids[index] = true;
+                await bondBidding.save();  // Save bondBidding first
+        
+                // Fetch and update bond
+                
+        
+                // Update and save the team
+                team.bondAllocated = index+1;
+                await team.save();  // Save team at the end
+        
+            } catch (error) {
+                console.error("Error during bond allocation:", error);
+            } finally {
+                isSaving = false; // Unlock saving
+            }
+        });
           socket.on("newBid", async({newBid, index})=>{
             // const currentTime = Date.now();
             // const cooldownTime = user.hold ? user.hold + 3 * 60 * 1000 : 0; // 3 minutes cooldown
@@ -133,6 +164,7 @@ app.prepare().then(async () => {
               await bondBidding.save();
                bondBidding = await BondBidding.findById('66f84084d39aba9ca3f14ba5');
               team.bondsBidFor = bondsBidFor;
+              team.amountOnHold=newBid;
               team.hold=Date.now();
               await team.save();
                   

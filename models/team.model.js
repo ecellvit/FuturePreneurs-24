@@ -57,6 +57,7 @@ const teamSchema = mongoose.Schema(
     },
     bondAllocated: {
       type: Number, //? Could be objectId of the bond, if it doesn't effect the speed
+      default:null
     },
     onHold: {
       type: Boolean, //? If false then the user can bid, else the timer starts for 3min
