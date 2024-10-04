@@ -57,6 +57,8 @@
   font-weight: bold;
   font-style: normal;
 }
+
+
 .gantari-bold {
   font-family: "Gantari", sans-serif;
   font-optical-sizing: auto;
@@ -121,4 +123,20 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+}
+
+.custom-round2 {
+  background-image: url('../assests/assests/Round2Back.svg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.custom-profilelogo {
+  background-image: url('../assests/assests/profilelogo.svg');
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
 }
