@@ -15,11 +15,23 @@
   font-style: normal;
 }
  @font-face {
+  font-family: 'Gotham Black Light';
+  src: url('../public/fonts/Gotham-Black.ttf') format('truetype');
+  font-weight:100px;
+  font-style: normal;
+}
+ @font-face {
   font-family: 'Anton';
   src: url('../public/fonts/Anton-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
+.gothic-a1-light {
+  font-family: "Gothic A1", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'Outfit Black';
   src: url('../public/fonts/Outfit-Black.ttf') format('truetype');
@@ -62,6 +74,26 @@
 
 }
 }
+/* Custom scrollbar styles */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #DAD0FF; /* track background color */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #807DFC; /* thumb color */
+  border-radius: 10px; /* roundness of the scrollbar thumb */
+  border: 2px solid transparent; /* Add space around the thumb */
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #807DFC #DAD0FF; /* For Firefox */
+}
+
 
 .custom-round2 {
     background-image: url('../assests/assests/Round2Back.svg');
@@ -69,6 +101,13 @@
     background-repeat: no-repeat;
     background-position: center;
 
+}
+
+.custom-profilelogo{
+  background-image: url('../assests/assests/profilelogo.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 
