@@ -11,6 +11,7 @@ import Navbar from "@/components/navbar";
 export default function Page() {
   const router = useRouter();
   const { data: session, status } = useSession();
+  const [googleFormLink, setGoogleFormLink] = useState(""); // New state for the form link
   const [check, setcheck] = useState(0);
 
   useEffect(() => {
@@ -101,24 +102,49 @@ export default function Page() {
 
   const getData = async () => {
     setLoading(true);
-    const res = await fetch("/api/userDataGet", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      Authorization: `Bearer ${session?.accessTokenBackend}`,
-      "Access-Control-Allow-Origin": "*",
-    });
-
-    const data = await res.json();
-    setTeamName(data?.team?.teamName);
-    setTeamMembers(data?.members);
-    setcheck(data?.user?.teamRole);
-    setIsQualified(data?.team?.isQualified);
-    setLoading(false);
+    try {
+      // Fetch user and team data
+      const userDataRes = await fetch("/api/userDataGet", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.accessTokenBackend}`,
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+  
+      const userData = await userDataRes.json();
+  
+      // Update state with user and team data
+      setTeamName(userData?.team?.teamName);
+      setTeamMembers(userData?.members);
+      setcheck(userData?.user?.teamRole);
+      setIsQualified(userData?.team?.isQualified);
+  
+      // Fetch Google Form link
+      const googleFormRes = await fetch("/api/googleDocs", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.accessTokenBackend}`,
+        },
+      });
+  
+      const googleFormData = await googleFormRes.json();
+  
+      // Set the Google Form link in state
+      if (googleFormData?.googleFormLink) {
+        setGoogleFormLink(googleFormData.googleFormLink);
+      }
+  
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      toast.error("An error occurred while fetching data.");
+      setLoading(false);
+    }
   };
-
+  
   const handleShowModal = (id = null, type = "") => {
     if (id === 0) {
       if (teamMembers.length > 1) {
@@ -292,6 +318,17 @@ export default function Page() {
             <br/>
             All the best for the next round!
           </h1>
+          <h1 className="googleDocs Link">
+  <a 
+    href={googleFormLink} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gradient-to-l hover:from-blue-500 hover:to-purple-500 transition duration-300 ease-in-out shadow-lg"
+  >
+    Wallet
+  </a>
+</h1>
+
         </div>
       ) : (
         <div className="flex flex-col text-black items-center border p-2 rounded-xl my-2">
