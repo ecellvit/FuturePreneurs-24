@@ -98,12 +98,8 @@ export default function Bidder() {
     const [hold,setHold]=useState(0);
     const [bondsBidFor, setBondsBidFor] = useState([]);
 
- 
+  const [startTime, setStartTime] = useState(0);
   const timeoutRef = useRef(null); // Declare a ref to store the timeout ID
-  const [priceChange, setPriceChange] = useState(false);
-    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-    const [startTime, setStartTime] = useState(0);
-    const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
       if (!hold) {
