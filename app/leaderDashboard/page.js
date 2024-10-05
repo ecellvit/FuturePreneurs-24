@@ -325,7 +325,7 @@ export default function Page() {
     rel="noopener noreferrer"
     className="inline-block bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gradient-to-l hover:from-blue-500 hover:to-purple-500 transition duration-300 ease-in-out shadow-lg"
   >
-    Wallet
+    Wallet 2
   </a>
 </h1>
 
