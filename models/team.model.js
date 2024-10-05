@@ -46,9 +46,6 @@ const teamSchema = mongoose.Schema(
     page: {
       type: Number,
     },
-    wallet: {
-      type: Number, //? To store the amount the user has
-    },
     loanAmount: {
       type: Number, //? To store the loan amount the user has taken, may differ form the wallet in round 2
     },
@@ -70,17 +67,20 @@ const teamSchema = mongoose.Schema(
     },
     bondsBidFor: [
       {
-        type: Number //? Array of bond numbers the user has bid for
-      }
+        type: Number, //? Array of bond numbers the user has bid for
+      },
     ],
-    hold:{
-      type:Number,
-      default:null
+    hold: {
+      type: Number,
+      default: null,
     },
     isAdmin: {
       type: Boolean,
       default: false,
-    }
+    },
+    wallet: {
+      type: String, // New field for storing the Google Form link
+    },
   },
   { collection: 'TeamModel' }
 );

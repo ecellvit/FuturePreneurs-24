@@ -6,7 +6,7 @@ import { getTokenDetails } from "@/utils/getTokenDetails";
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 
-export async function POST(req, { params }) {
+export async function GET(req, { params }) {
   try {
     await connectMongo();
 
