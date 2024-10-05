@@ -61,3 +61,9 @@
 //         </div >
 //     );
 // }
+
+"use client"; // For Next.js
+
+export default function BidPage() {
+  return null; // Renders nothing
+}
