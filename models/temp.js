@@ -4,7 +4,7 @@
 // // Function to connect to MongoDB
 // async function connectMongo() {
 //   try {
-//     const uri = process.env.MONGO_URI || 'mongodb+srv://darshnahar2023:xrcBHoK2mD8wgQZX@round1-testing.uwyo8.mongodb.net/';
+//     const uri = process.env.MONGO_URI;
 //     await mongoose.connect(uri, {
 //       useNewUrlParser: true,
 //       useUnifiedTopology: true
