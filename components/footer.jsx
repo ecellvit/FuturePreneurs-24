@@ -20,10 +20,6 @@ const Footer = () =>{
             E-CELL
           </h1>
           <div className="pl-10 ">
-            <div className='flex items-center gap-2'>
-              <p><PhoneIcon /></p>
-              <a href="tel:+91 87777 93331">+91 87777 93331</a>
-            </div>
             <div className='flex items-center gap-2 '>
               <p className=' pt-[0.8vh]'><MailIcon /></p>
               <a href="mailto:helloecellvit@gmail.com">helloecellvit@gmail.com</a>
